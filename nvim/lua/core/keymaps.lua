@@ -36,15 +36,22 @@ keymap("i", "JJ", "<ESC>", opts)
 keymap("i", "JJJJ", "<Nop>", opts)
 
 
+-- Write buffer
+vim.keymap.set("n", "<leader>s", ":w<CR>")
+
+-- Move lines up and down
+vim.keymap.set("n", "<C-j>", ":move .+1<CR>==")
+vim.keymap.set("n", "<C-k>", ":move .-2<CR>==")
+
 -- [[ Highlight on yank ]]
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+--[[ local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
   group = highlight_group,
   pattern = '*',
-})
+}) ]]
 
 
 
